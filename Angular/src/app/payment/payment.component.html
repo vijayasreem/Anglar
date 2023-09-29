@@ -1,0 +1,41 @@
+﻿
+<form [formGroup]="paymentForm" (ngSubmit)="submitForm()">
+  <div>
+    <label for="cardNumber">Card Number</label>
+    <input type="text" id="cardNumber" formControlName="cardNumber" required>
+    <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
+      <div *ngIf="cardNumber.errors.required">Card Number is required.</div>
+      <div *ngIf="cardNumber.errors.pattern">Invalid card number.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" formControlName="cvv" required>
+    <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)">
+      <div *ngIf="cvv.errors.required">CVV is required.</div>
+      <div *ngIf="cvv.errors.pattern">Invalid CVV code.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="amount">Amount (MYR)</label>
+    <input type="number" id="amount" formControlName="amount" required>
+    <div *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+      <div *ngIf="amount.errors.required">Amount is required.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="currency">Currency</label>
+    <select id="currency" formControlName="currency" required>
+      <option value="USD">USD</option>
+      <option value="SGD">SGD</option>
+    </select>
+    <div *ngIf="currency.invalid && (currency.dirty || currency.touched)">
+      <div *ngIf="currency.errors.required">Currency is required.</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="paymentForm.invalid">Submit</button>
+</form>
