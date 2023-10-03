@@ -1,0 +1,44 @@
+﻿
+<form [formGroup]="loanForm" (ngSubmit)="submitLoanForm()">
+  <div>
+    <label for="identification">Identification:</label>
+    <input type="text" id="identification" formControlName="identification" required>
+    <div *ngIf="loanForm.get('identification').invalid && (loanForm.get('identification').dirty || loanForm.get('identification').touched)">
+      <div *ngIf="loanForm.get('identification').errors.required">Identification is required.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="proofOfIncome">Proof of Income:</label>
+    <input type="text" id="proofOfIncome" formControlName="proofOfIncome" required>
+    <div *ngIf="loanForm.get('proofOfIncome').invalid && (loanForm.get('proofOfIncome').dirty || loanForm.get('proofOfIncome').touched)">
+      <div *ngIf="loanForm.get('proofOfIncome').errors.required">Proof of Income is required.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="creditHistory">Credit History:</label>
+    <input type="text" id="creditHistory" formControlName="creditHistory" required>
+    <div *ngIf="loanForm.get('creditHistory').invalid && (loanForm.get('creditHistory').dirty || loanForm.get('creditHistory').touched)">
+      <div *ngIf="loanForm.get('creditHistory').errors.required">Credit History is required.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="employmentDetails">Employment Details:</label>
+    <input type="text" id="employmentDetails" formControlName="employmentDetails" required>
+    <div *ngIf="loanForm.get('employmentDetails').invalid && (loanForm.get('employmentDetails').dirty || loanForm.get('employmentDetails').touched)">
+      <div *ngIf="loanForm.get('employmentDetails').errors.required">Employment Details is required.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="loanOfferAccepted">Loan Offer Accepted:</label>
+    <input type="checkbox" id="loanOfferAccepted" formControlName="loanOfferAccepted" required>
+    <div *ngIf="loanForm.get('loanOfferAccepted').invalid && (loanForm.get('loanOfferAccepted').dirty || loanForm.get('loanOfferAccepted').touched)">
+      <div *ngIf="loanForm.get('loanOfferAccepted').errors.required">Loan Offer must be accepted.</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loanForm.invalid">Approve Loan</button>
+</form>
